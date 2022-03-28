@@ -1,25 +1,29 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+import './styles/NavBar.css';
 
 function NavBar(){
     return(
-        <ul>
-            <li>
-                <Link to="/"> OpenEduc</Link>
-            </li>
+        <div className="bar">
 
-            <li>
-                <Link to="/Etablissements"> Etablissements</Link>
-            </li>
+        <div className="logo"><Link to="/" className="a"> OpenEduc</Link></div>
 
-            <li>
-                <Link to="/Admin"> Dashboard</Link>
-            </li>
+            <div className="navbar-menu">
+                <ul className="navbar-nav">
+                    <li>
+                        <Link to="/Etablissements" className="a"> 🏫 Etablissements</Link>
+                    </li>
 
-            <li>
-                <Link to="/Login"> Connexion</Link>
-            </li>
-        </ul>
+                    <li>
+                        <Link to="/Admin"className="a"> 📊 Dashboard</Link>
+                    </li>
+
+                    <li>
+                        <Link to="/Login"className="a"> 👋 Connexion</Link>
+                    </li>
+                </ul>
+            </div>  
+        </div>
     );
 }
 
