@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import '../styles/formulaire.css';
+import './styles/formulaire.css';
 import Axios from "axios";
 import axios from "axios";
 

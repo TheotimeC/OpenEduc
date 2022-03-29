@@ -1,5 +1,5 @@
 import SampleLine from './chart';
-import '../styles/graphique.css'
+import './styles/graphique.css'
 
 
 export default function graphique(){

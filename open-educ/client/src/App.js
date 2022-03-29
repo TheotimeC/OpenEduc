@@ -11,7 +11,7 @@ const domContainer = document.querySelector('#app');
 function App() {
   return (
     
-    <Formulaire />
+    <Graphique />
 
 
 
