@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import '../styles/formulaire.css';
-import Axios from "axios";
+import './styles/formulaire.css';
 import axios from "axios";
 
 
@@ -23,7 +22,7 @@ export default function Formulaire(){
 
         console.log("rrr")
 
-        Axios.post('http://localhost:3001/api/insert', {
+        axios.post('http://localhost:3001/api/insert', {
             test: test, 
             text: text,
         })
@@ -61,7 +60,7 @@ export default function Formulaire(){
 
                 return <h1> N° {val.test} | text : {val.text}</h1>
             
-            })};
+            })}
            
         
 
