@@ -1,9 +1,6 @@
 import React from 'react';
 import './styles/Etablissements.css'
 import Bischoffsheim from './img/Bischoffsheim.jpg'
-import Boersch from './img/Boersch_011.jpg'
-import {Link} from 'react-router-dom';
-import { MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 
 function Etablissements (){
     return(
