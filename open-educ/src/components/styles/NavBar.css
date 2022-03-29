@@ -3,6 +3,7 @@
     padding: 8px;
     list-style-type: none;
     text-decoration: none;
+    color: #1B9CFC;
 
 }
 .a:hover{
@@ -10,13 +11,13 @@
 }
 .a, .a:focus, .a:active {
     text-decoration: none;
-    color: white;
+    color: #092c47;
 }
 
 
 li{
     display: inline;
-    color: white;
+    color: #1B9CFC;
     text-align: center;
     text-decoration: none;
     float: left;
@@ -25,6 +26,7 @@ li{
     font-size: 22px;
     padding: 5px 14px;
     list-style-type: none;
+    
     
     
 }

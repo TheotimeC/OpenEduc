@@ -6,7 +6,7 @@ function NavBar(){
     return(
         <div className="bar">
 
-        <div className="logo"><Link to="/" className="a"> OpenEduc</Link></div>
+        <div className="logo"><Link to="/Etablissements" className="a"> Open Educ</Link></div>
 
             <div className="navbar-menu">
                 <ul className="navbar-nav">
