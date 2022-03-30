@@ -1,0 +1,90 @@
+.bandeau{
+    height: 15%;
+    width:80%;
+    margin:0px auto;
+    margin-top: 3%;
+    padding: 1%;
+    background-color: white;
+    border: 10px;
+  }
+#nom{
+    text-align: center;
+    font-size: larger;
+}
+#bandeauDate{
+    border:2px solid black;
+    margin-left: 30%;
+    margin-right: 30%;
+    background-color: #D3D3D3;
+    padding: 1%;
+    border-radius:20px;
+}
+#dateMAJ, #anneeSco{
+    border:2px solid black;
+    margin-left: 20px;
+    margin-right: 18px;
+    overflow: hidden;
+    border-radius:20px;
+    display: inline-block;
+    background-color: white;
+    text-align: center;
+    padding: 2%;
+    font-size: larger;
+    font-weight: bold;
+  }
+#dateMAJ{
+    width: 35%;
+}
+#anneeSco{
+    width: 35%;
+}
+
+#infoEcole {
+    border:2px solid black;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #D3D3D3;
+    padding: 1%;
+    border-radius:20px;
+}
+
+#lieu, #contact{
+    border:2px solid black;
+    width: 25%;
+    margin-left: 30px;
+    margin-right: 30px;
+    overflow: hidden;
+    border-radius:20px;
+    display: inline-block;
+    background-color: white;
+    text-align: center;
+    padding: 1%;
+    font-size: larger;
+    font-weight: bold;
+}
+.img{
+    width: 20%;
+    margin-left: 30px;
+    margin-right: 30px;
+    overflow: hidden;
+    border-radius:20px;
+    display: inline-block;
+    text-align: center;
+    padding: 1%;
+    font-size: larger;
+    font-weight: bold;
+}
+#lieu, #contact{
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+.img img{
+    border:2px solid black;
+    border-radius: 20%;
+    overflow: hidden;
+    width: 150px;
+    height: 100px;
+}
+
+       
