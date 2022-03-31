@@ -1,15 +1,22 @@
 import * as React from 'react';
-import logo from './logo.svg';
-import './components/style/App.css';
-import descriptif from './components/descriptifEcole';
-import './components/style/descriptif.css'
-import connexion from './components/connexion'
+import './components/styles/App.css';
+import Descriptif from './components/DescriptifEcole';
+import './components/styles/Descriptif.css'
+import Graphique from './components/Graphique';
+import Table from './components/Table';
+import Correspondant from './components/Correspondant'
 
 function App() {
   return (
-  descriptif()
-  );
+    <div className="App">
+     <Descriptif />
+     <Correspondant />
+     <Table />
+     <Graphique />
+    </div>
+  )
 }
 
 export default App;
+
 
