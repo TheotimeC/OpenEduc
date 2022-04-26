@@ -14,6 +14,12 @@ const db = mysql.createPool({
     database: "open_educ",
 })
 
+//________________________________
+//
+//
+//      Utilitaire 
+//
+//_________________________________
 
 
 app.use(cors());
@@ -23,6 +29,49 @@ app.listen(3001, () => {
 
     console.log("runnig on port 3001");
 });
+
+
+
+app.post('/api/register', (req, res)=> {
+
+    const login = req.body.login;
+    const psw = req.body.psw;
+
+    db.query("INSERT INTO user (login, password) VALUES (?,?)",
+    [login,psw],(err, result) => {
+
+        res.send(err)
+    })
+} ) 
+
+
+
+
+app.post('/api/login', (req, res)=> {
+
+    const login = req.body.login;
+    const psw = req.body.psw;
+
+    db.query("SELECT * FROM user WHERE login = ? AND password = ?",
+    [login,psw],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            console.log("cool")
+        }else{
+            res.send({message : "Login ou Mot de Passe incorrect !"})
+            
+        }
+        
+    })
+} ) 
+
+
+
 
 
 
@@ -36,31 +85,30 @@ app.listen(3001, () => {
 // })
 
 
-app.get("/api/get", (req, res)=> {
+// app.post("/api/insert", (req, res)=> {
 
-    const sqlSelect = "SELECT * FROM ecole";
-    db.query(sqlSelect, (err, result) => {
+
+//     const test = req.body.test
+//     const text = req.body.text
+
+
+//     const sqlReq = "INSERT INTO ecole (text, test) VALUES (?, ?)";
+//     db.query(sqlReq, [test, text], (err, result) => {
     
-        res.send(result)
+//         console.log(err)
 
-    });
-
-})
-
+//     });
+// })
 
 
-app.post("/api/insert", (req, res)=> {
 
+// app.get("/api/get", (req, res)=> {
 
-    const test = req.body.test
-    const text = req.body.text
-
-
-    const sqlReq = "INSERT INTO ecole (text, test) VALUES (?, ?)";
-    db.query(sqlReq, [test, text], (err, result) => {
+//     const sqlSelect = "SELECT * FROM ecole";
+//     db.query(sqlSelect, (err, result) => {
     
-        console.log(err)
+//         res.send(result)
 
-    });
-})
+//     });
 
+// })

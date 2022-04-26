@@ -1,22 +1,25 @@
-import logo from './logo.svg';
-import React from 'react';
-import ReactDOM  from 'react';
 import './App.css';
-import Graphique from './components/graphique';
-import Table from './components/table';
-import Formulaire from './components/formulaire';
+import React from 'react';
+import Home from './components/Home';
+import Etablissements from './components/Etablissements';
+import Login from './components/Login';
+import Admin from './components/Admin';
+import {Route, Router, Routes} from 'react-router-dom';
+import NavBar from './components/NavBar';
 
-const domContainer = document.querySelector('#app');
 
 function App() {
   return (
-    
-    <Formulaire />
-
-
-
-
-
+    <div className="App">
+        <NavBar/>
+        <Routes>
+          <Route exact path="/" element={<Home/>}/>
+          <Route exact path="/Etablissements" element={<Etablissements/>}/>
+          <Route exact path="/Login" element={<Login/>}/>
+          <Route exact path="/Admin" element={<Admin/>}/>
+        </Routes>
+      
+    </div>
   );
 }
 
