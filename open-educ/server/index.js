@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require('cors')
 const mysql = require('mysql');
-
+const port = 3001;
 
 
 const db = mysql.createPool({
@@ -14,15 +14,68 @@ const db = mysql.createPool({
     database: "open_educ",
 })
 
+//________________________________
+//
+//
+//      Utilitaire 
+//
+//_________________________________
 
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
-app.listen(3001, () => { 
 
-    console.log("runnig on port 3001");
+//Connexion au port 3001 
+
+app.listen(port, () => { 
+
+    console.log(`Serveur connecter au port : ${port}`);
 });
+
+
+
+app.post('/api/register', (req, res)=> {
+
+    const login = req.body.login;
+    const psw = req.body.psw;
+
+    db.query("INSERT INTO user (login, password) VALUES (?,?)",
+    [login,psw],(err, result) => {
+
+        res.send(err)
+    })
+} ) 
+
+
+
+
+app.post('/api/login', (req, res)=> {
+
+    const login = req.body.login;
+    const psw = req.body.psw;
+
+    db.query("SELECT * FROM user WHERE login = ? AND password = ?",
+    [login,psw],
+    (err, result) => {
+        
+        if(err){
+            res.send({err: err});
+        }
+
+        if (result.length > 0){
+            res.send(result)
+
+        }else{
+            res.send({message : "Login ou Mot de Passe incorrect !"})
+            
+        }
+        
+    })
+} ) 
+
+
+
 
 
 
@@ -36,31 +89,30 @@ app.listen(3001, () => {
 // })
 
 
-app.get("/api/get", (req, res)=> {
+// app.post("/api/insert", (req, res)=> {
 
-    const sqlSelect = "SELECT * FROM ecole";
-    db.query(sqlSelect, (err, result) => {
+
+//     const test = req.body.test
+//     const text = req.body.text
+
+
+//     const sqlReq = "INSERT INTO ecole (text, test) VALUES (?, ?)";
+//     db.query(sqlReq, [test, text], (err, result) => {
     
-        res.send(result)
+//         console.log(err)
 
-    });
-
-})
-
+//     });
+// })
 
 
-app.post("/api/insert", (req, res)=> {
 
+// app.get("/api/get", (req, res)=> {
 
-    const test = req.body.test
-    const text = req.body.text
-
-
-    const sqlReq = "INSERT INTO ecole (text, test) VALUES (?, ?)";
-    db.query(sqlReq, [test, text], (err, result) => {
+//     const sqlSelect = "SELECT * FROM ecole";
+//     db.query(sqlSelect, (err, result) => {
     
-        console.log(err)
+//         res.send(result)
 
-    });
-})
+//     });
 
+// })
