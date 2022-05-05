@@ -1,32 +1,16 @@
 import React from 'react';
+import './styles/Login.css'
 import { useState } from 'react';
-import './styles/Login.css';
 import axios from 'axios';
-
-
-
+import UserProfile from './Session';
 
 function Login (){
 
-    // const [userNameReg, setUserNameReg] = useState('');
-    // const [pswReg, setPswReg] = useState('');
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
-    const [loginStatus, setLoginStatus] = useState('');
-
-
-
-    // const register = () => { 
-        
-    //     axios.post('http://localhost:3001/api/register', {
-    //         login: userNameReg,
-    //         psw:   pswReg,
-    //     }).then((response) => {
-    //         console.log(response);
-    //     })
-    // }
+    const [loginStatus, setLoginStatus] = useState('');;
 
     const login = () => { 
         
@@ -34,7 +18,8 @@ function Login (){
             login: userName,
             psw:   password,
         }).then((response) => {
-            console.log(response.data);
+
+            console.log(response.data[0]);
 
             if(response.data.message){
 
@@ -42,12 +27,33 @@ function Login (){
 
             }else{
 
-                setLoginStatus(response.data[0].id)
+               UserProfile.setToken(response.data[0].token)
+               setLoginStatus(UserProfile.getToken())
+               verifieRole(UserProfile.getToken())
             }
         })
+
+
+        const verifieRole = (UserToken) => {
+    
+            axios.post('http://localhost:3001/api/roleVerifie', {
+                UserToken: UserToken,
+            }).then((response) => {
+  
+               console.log(response.data)
+        
+                if(response.data.message){
+        
+                    console.log(response.data.message)
+                }else{
+                    
+                    console.log(response.data[0].role)  
+                }
+            })
+        };
+
+
     }
-
-
 
 
     return(
@@ -79,4 +85,4 @@ function Login (){
     )
 }
 
-export default Login
+export default Login;

@@ -1,0 +1,32 @@
+.bandeauDate{
+    height: 15%;
+    width: 400px;;
+    margin:0px auto;
+    margin-top: 3%;
+    border-radius:20px;
+    border:2px solid black;
+    background-color: #D3D3D3;
+    box-shadow: -10px 5px 10px grey;
+    padding: 1%;
+  }
+
+
+  #dateMAJ, #anneeSco{
+    border:2px solid black;
+    margin-left: 20px;
+    margin-right: 18px;
+    overflow: hidden;
+    border-radius:20px;
+    display: inline-block;
+    background-color: white;
+    text-align: center;
+    padding: 2%;
+    font-size: larger;
+    font-weight: bold;
+  }
+#dateMAJ{
+    width: 35%;
+}
+#anneeSco{
+    width: 35%;
+}

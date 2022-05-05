@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require('cors')
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 
 
@@ -11,15 +11,9 @@ const db = mysql.createPool({
     host: "localhost",
     user: "etienne",
     password: "q75D9TxWj4z!*ug#%78AyGK3T",
-    database: "open_educ",
+    database: "openeduc",
 })
 
-//________________________________
-//
-//
-//      Utilitaire 
-//
-//_________________________________
 
 
 app.use(cors());
@@ -32,36 +26,24 @@ app.listen(3001, () => {
 
 
 
-app.post('/api/register', (req, res)=> {
-
-    const login = req.body.login;
-    const psw = req.body.psw;
-
-    db.query("INSERT INTO user (login, password) VALUES (?,?)",
-    [login,psw],(err, result) => {
-
-        res.send(err)
-    })
-} ) 
-
-
-
-
 app.post('/api/login', (req, res)=> {
 
     const login = req.body.login;
     const psw = req.body.psw;
-
-    db.query("SELECT * FROM user WHERE login = ? AND password = ?",
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("SELECT token FROM user WHERE iduser = ? AND password = ?",
     [login,psw],(err, result) => {
         
         if(err){
             res.send({err: err});
+            res.status(200).json
         }
 
         if (result.length > 0){
             res.send(result)
-            console.log("cool")
+            res.status(200).json
+
         }else{
             res.send({message : "Login ou Mot de Passe incorrect !"})
             
@@ -70,45 +52,115 @@ app.post('/api/login', (req, res)=> {
     })
 } ) 
 
+app.post('/api/roleVerifie', (req, res)=> {
+
+    const token = req.body.UserToken;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("SELECT role FROM user WHERE token = ?",
+    [token],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+        }else{
+            res.send({message : `Token non reconnu : ${token}`})
+            res.status(200).json
+            
+            
+        }
+        
+    })
+} ) 
 
 
 
+app.get('/api/etab', (req, res)=> {
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("SELECT idetablissement, nom, adresse FROM etablissement",
+    (err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+
+        }
+        
+    })
+} ) 
 
 
-// app.get("/api", (req, res) => {
+app.get('/api/corres', (req, res)=> {
 
-//     res.send("je mange bien bien");
-//     // const sqlReq = "INSERT INTO ecole (text, test) VALUES ('pierre', 'courage')";
-//     // db.query(sqlReq, (err, result) => {  
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("SELECT * FROM personne",
+    (err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
 
-//     // })
-// })
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
 
+        }
+        
+    })
+} ) 
 
-// app.post("/api/insert", (req, res)=> {
+app.get('/api/desc', (req, res)=> {
 
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("SELECT * FROM etablissement WHERE idetablissement=1",
+    (err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
 
-//     const test = req.body.test
-//     const text = req.body.text
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
 
+        }
+        
+    })
+} ) 
 
-//     const sqlReq = "INSERT INTO ecole (text, test) VALUES (?, ?)";
-//     db.query(sqlReq, [test, text], (err, result) => {
-    
-//         console.log(err)
+app.get('/api/classe', (req, res)=> {
 
-//     });
-// })
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("SELECT * FROM classe WHERE idetablissement=1",
+    (err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
 
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
 
-
-// app.get("/api/get", (req, res)=> {
-
-//     const sqlSelect = "SELECT * FROM ecole";
-//     db.query(sqlSelect, (err, result) => {
-    
-//         res.send(result)
-
-//     });
-
-// })
+        }
+        
+    })
+} ) 
