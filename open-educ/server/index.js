@@ -30,17 +30,20 @@ app.post('/api/login', (req, res)=> {
 
     const login = req.body.login;
     const psw = req.body.psw;
-
-    db.query("SELECT * FROM personne WHERE nom = ? AND prenom = ?",
-    [login,psw],
-    (err, result) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("SELECT token FROM user WHERE iduser = ? AND password = ?",
+    [login,psw],(err, result) => {
         
         if(err){
             res.send({err: err});
+            res.status(200).json
         }
 
         if (result.length > 0){
             res.send(result)
+            res.status(200).json
 
         }else{
             res.send({message : "Login ou Mot de Passe incorrect !"})
@@ -49,6 +52,33 @@ app.post('/api/login', (req, res)=> {
         
     })
 } ) 
+
+app.post('/api/roleVerifie', (req, res)=> {
+
+    const token = req.body.UserToken;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("SELECT role FROM user WHERE token = ?",
+    [token],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+        }else{
+            res.send({message : `Token non reconnu : ${token}`})
+            res.status(200).json
+            
+            
+        }
+        
+    })
+} ) 
+
 
 
 app.get('/api/etab', (req, res)=> {

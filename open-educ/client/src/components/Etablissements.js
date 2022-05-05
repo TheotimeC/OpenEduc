@@ -33,7 +33,7 @@ function Etablissements (){
               {Object.values(Data).map(({ idetablissement, nom, adresse }) =>(
                 
                 <div key={idetablissement}>
-                  
+
                   <Etabli 
                     nom={nom} 
                     adresse={adresse}

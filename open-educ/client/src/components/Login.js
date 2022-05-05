@@ -2,6 +2,7 @@ import React from 'react';
 import './styles/Login.css'
 import { useState } from 'react';
 import axios from 'axios';
+import UserProfile from './Session';
 
 function Login (){
 
@@ -9,16 +10,16 @@ function Login (){
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
-    const [loginStatus, setLoginStatus] = useState('');
-
+    const [loginStatus, setLoginStatus] = useState('');;
 
     const login = () => { 
         
-        axios.post('http://localhost:3001/api/etab', {
+        axios.post('http://localhost:3001/api/login', {
             login: userName,
             psw:   password,
         }).then((response) => {
-            console.log(response.data);
+
+            console.log(response.data[0]);
 
             if(response.data.message){
 
@@ -26,9 +27,32 @@ function Login (){
 
             }else{
 
-                setLoginStatus(response.data[0].id)
+               UserProfile.setToken(response.data[0].token)
+               setLoginStatus(UserProfile.getToken())
+               verifieRole(UserProfile.getToken())
             }
         })
+
+
+        const verifieRole = (UserToken) => {
+    
+            axios.post('http://localhost:3001/api/roleVerifie', {
+                UserToken: UserToken,
+            }).then((response) => {
+  
+               console.log(response.data)
+        
+                if(response.data.message){
+        
+                    console.log(response.data.message)
+                }else{
+                    
+                    console.log(response.data[0].role)  
+                }
+            })
+        };
+
+
     }
 
 
