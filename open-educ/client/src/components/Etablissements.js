@@ -13,14 +13,17 @@ function Etablissements (){
     etab();
   }, []);
 
-  const etab = () => { 
+  const etab = () => {  
       
       axios.get('http://localhost:3001/api/etab', {
       }).then((response) => {
         setData(response.data)
+
       }); 
 
   };
+
+  
 
     return(
         <div>
@@ -28,8 +31,9 @@ function Etablissements (){
 
             
               {Object.values(Data).map(({ idetablissement, nom, adresse }) =>(
-
+                
                 <div key={idetablissement}>
+                  
                   <Etabli 
                     nom={nom} 
                     adresse={adresse}

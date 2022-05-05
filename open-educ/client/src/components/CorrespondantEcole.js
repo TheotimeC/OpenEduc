@@ -7,7 +7,7 @@ import axios from 'axios';
 function Correspondant(idetablissement) {
     
     const id = parseInt(Object.values(idetablissement));
-    console.log(id)
+    
     const [Correspondant, getCorrespondant] = React.useState([]);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ function Correspondant(idetablissement) {
         axios.get('http://localhost:3001/api/corres', {
         }).then((response) => {
             getCorrespondant(response.data[id]);
-            console.log(response.data[id])
+            
         });
     };
 

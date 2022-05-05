@@ -18,11 +18,11 @@ function Table(){
     const classeBDD = () => { 
         axios.get('http://localhost:3001/api/classe', {
         }).then((response) => {
-            SetClasse(response.data[0]);
-            SetClasse1(response.data[1]);
-            SetClasse2(response.data[2]);
-            SetClasse3(response.data[3]);
-            SetClasse4(response.data[4]);
+            SetClasse(response.data[5]);
+            SetClasse1(response.data[6]);
+            SetClasse2(response.data[7]);
+            SetClasse3(response.data[8]);
+            SetClasse4(response.data[9]);
 
 
   

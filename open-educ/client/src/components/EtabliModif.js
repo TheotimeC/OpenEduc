@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import FicheEcole1 from './FicheEcole1'
 
 
-function Etabli ({idetablissement, nom, adresse}){
+function EtabliModif ({idetablissement, nom, adresse}){
 
   var url="";
 
@@ -41,7 +41,7 @@ function Etabli ({idetablissement, nom, adresse}){
               <div className='btn'>
                 <button>
                     <div className='a'>
-                    <Link to={url}> Voir plus </Link>
+                    <Link to={url}> Modifier </Link>
                       
                       </div>
                 </button>
@@ -54,4 +54,4 @@ function Etabli ({idetablissement, nom, adresse}){
     )
 }
 
-export default Etabli
+export default EtabliModif

@@ -9,9 +9,10 @@ function FicheEcole1(idetablissement) {
   return (
     <div className="App">
       <Date />
-      <Descriptif />
+      <Descriptif idetablissement={1}/>
       <Correspondant idetablissement={1}/>
-      <Table />
+      <Table/>
+      <Graphique/>
     </div>
   )
 }

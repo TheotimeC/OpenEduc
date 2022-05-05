@@ -3,18 +3,25 @@ import Bischoffsheim from './img/Bischoffsheim.jpg';
 import './styles/Descriptif.css';
 import axios from 'axios';
 
-function Descriptif() {
+function Descriptif(idetablissement) {
 
-    const [Description , getDescription] = React.useState('');
+    const id = (parseInt(Object.values(idetablissement))-1);
+
+    console.log(id)
+
+    const [Description , getDescription] = React.useState([]);
+
     useEffect(() => {
         // ⬇ This calls my get request from the server
         Desc();
       }, []);
+
     const Desc = () => { 
       
         axios.get('http://localhost:3001/api/desc', {
         }).then((response) => {
-            getDescription(response.data[0]);
+            getDescription(response.data[id]);
+            
 
         });
     };

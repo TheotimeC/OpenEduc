@@ -88,7 +88,7 @@ app.get('/api/corres', (req, res)=> {
 
 app.get('/api/desc', (req, res)=> {
 
-    db.query("SELECT * FROM etablissement WHERE idetablissement=1",
+    db.query("SELECT * FROM etablissement ",
     (err, result) => {
         
         if(err){
@@ -105,7 +105,7 @@ app.get('/api/desc', (req, res)=> {
 
 app.get('/api/classe', (req, res)=> {
 
-    db.query("SELECT * FROM classe WHERE idetablissement=1",
+    db.query("SELECT * FROM classe",
     (err, result) => {
         
         if(err){
@@ -119,6 +119,25 @@ app.get('/api/classe', (req, res)=> {
         
     })
 } ) 
+
+
+app.post('/api/insert', (req, res)=> {
+
+    db.query("SELECT * FROM classe",
+    (err, result) => {
+        
+        if(err){
+            res.send({err: err});
+        }
+
+        if (result.length > 0){
+            res.send(result)
+
+        }
+        
+    })
+} ) 
+
 /*
  app.post("http://localhost:3001/api/insert", (req, res) => {
 

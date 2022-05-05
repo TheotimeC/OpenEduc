@@ -1,60 +1,47 @@
-import React from 'react';
 import './styles/Admin.css'
-import Bischoffsheim from './img/Bischoffsheim.jpg'
+import React, { useEffect } from 'react';
+import axios from 'axios';
+import EtabliModif from './EtabliModif';
 
 function Admin (){
+
+  const [Data, setData] = React.useState([]);
+
+  useEffect(() => {
+    // ⬇ This calls my get request from the server
+    etab();
+  }, []);
+
+  const etab = () => {  
+      
+      axios.get('http://localhost:3001/api/etab', {
+      }).then((response) => {
+        setData(response.data)
+
+      }); 
+
+  };
+
+  
+
     return(
         <div>
-            <h1>📊Dashboard📊</h1>
-            <div className='card-container'>
-              <div className='image-container'>
-                <img src={Bischoffsheim} alt=''/>
-              </div>
-              <div className='card-content'>
+            <h1>📊 Dashboard 📊</h1>
 
-                <div className='card-title'>
-                  <h3>Bischoffsheim</h3>
+            
+              {Object.values(Data).map(({ idetablissement, nom, adresse }) =>(
+                
+                <div key={idetablissement}>
+                  
+                  <EtabliModif 
+                    nom={nom} 
+                    adresse={adresse}
+                    idetablissement={idetablissement}
+                  />
                 </div>
-                <div className='card-body'>
-                  <p>Bischoffsheim grosse école sa mère</p>
-                </div>
-
-              </div>
-
-              <div className='btn'>
-                <button>
-                  <a>
-                    Modifier
-                  </a>
-                </button>
-              </div>
-
-            </div>
-
-            <div className='card-container'>
-              <div className='image-container'>
-                <img src={Bischoffsheim} alt=''/>
-              </div>
-              <div className='card-content'>
-
-                <div className='card-title'>
-                  <h3>Boersch</h3>
-                </div>
-                <div className='card-body'>
-                  <p>Boersch grosse école sa mère</p>
-                </div>
-
-              </div>
-
-              <div className='btn'>
-                <button>
-                  <a>
-                    Modifier
-                  </a>
-                </button>
-              </div>
-
-            </div>
+					))}
+           
+            
         </div>
     )
 }
