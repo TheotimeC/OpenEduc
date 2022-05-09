@@ -34,6 +34,14 @@
     background-color: #D3D3D3;
     
 }
+.table-fill2 {
+  width: 1000PX;;
+
+  margin-bottom: 3%;
+  border-radius:20%;
+  background-color: rgb(255, 0, 0);
+  background-color: #D3D3D3;
+}
  
 th {
   color:#D5DDE5;;
@@ -135,3 +143,4 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
+

@@ -9,6 +9,10 @@ h1{
     text-align: center; 
     text-transform: uppercase;
 }
+h4{
+    font-style: italic;
+    color: #092c47;
+}
 .card-container{
     width:350px;
     overflow: hidden;
@@ -23,4 +27,7 @@ h1{
 
 
 
+}
+.test{
+    display: inline-block;
 }

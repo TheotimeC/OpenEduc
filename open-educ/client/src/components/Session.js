@@ -11,12 +11,12 @@ var UserProfile = (function() {
       // Also set this in cookie/localStorage
     };
 
-    var getToken = function() {
-      return userToken;    // Or pull this from cookie/localStorage
+    var getEcole = function(idEcole) {
+      return idEcole;    // Or pull this from cookie/localStorage
     };
   
-    var setToken = function(token) {
-      userToken = token;     
+    var setEcole = function(idEcole) {
+      idEcole = idEcole;     
 
     };
 
@@ -25,7 +25,9 @@ var UserProfile = (function() {
   
     return {
       getToken: getToken,
-      setToken: setToken
+      setToken: setToken,
+      getEcole : getEcole,
+      setEcole : setEcole
     }
   
   })();

@@ -29,7 +29,6 @@ export default function SampleLine() {
         });
     };
 
-    
     const series = [
       {
         name: "Nombre d'élèves par classe", //will be displayed on the y-axis
@@ -53,6 +52,7 @@ export default function SampleLine() {
 
 
     ;
+    
     return (
       <div>
         <Chart options={options} type="bar" series={series} width="98%" />

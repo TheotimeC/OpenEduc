@@ -1,8 +1,12 @@
 import './styles/Table.css'
 import axios from 'axios'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
+
+
 
 function Table(){
+
+
 
     const [Classe, SetClasse] = React.useState('');
     const [Classe1, SetClasse1] = React.useState('');
@@ -23,9 +27,6 @@ function Table(){
             SetClasse2(response.data[2]);
             SetClasse3(response.data[3]);
             SetClasse4(response.data[4]);
-
-
-  
         });
     };
 
@@ -34,9 +35,8 @@ function Table(){
 
     return(
 
-        <div>
-            <div className='table-contaneur'>
-        
+        <div className='table-contaneur'>
+            
         
                 <div className="table-title">
                     <h3> </h3> 
@@ -80,27 +80,23 @@ function Table(){
                             </tr>
                             <tr>
                                 <td className="text-left"></td>
-                                <td className="text-left">Total Effectifs</td>
-                                <td className='text-left'>{total_effectif}</td>
-                            </tr>
-                            <tr>
-                                <td className="text-left"></td>
-                                <td className="text-left">Moyenne par classe</td>
+                                <td className="text-left">{total_effectif}</td>
                                 <td className='text-left'>{moyenne}</td>
                             </tr>
+                            
                         </tbody>
 
                     </table>
                     
                 </div>
-    </div>
+        
 
-    ) 
+    )
        
    
     
           
-    }
+}
 
 
 

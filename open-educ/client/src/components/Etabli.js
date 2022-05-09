@@ -1,7 +1,9 @@
 import './styles/Etablissements.css'
 import Bischoffsheim from './img/Bischoffsheim.jpg'
 import {Link} from 'react-router-dom';
-import FicheEcole1 from './FicheEcole1'
+import { useState } from 'react';
+import FicheEcole1 from './FicheEcole1';
+import UserProfile from './Session';
 
 
 function Etabli ({idetablissement, nom, adresse}){
@@ -19,6 +21,8 @@ function Etabli ({idetablissement, nom, adresse}){
       url = "/Etablissements/Ecole3";
       break;
   }
+
+   
 
     return(
         <div>
@@ -39,12 +43,12 @@ function Etabli ({idetablissement, nom, adresse}){
               </div>
                 
               <div className='btn'>
-                <button>
-                    <div className='a'>
-                    <Link to={url}> Voir plus </Link>
-                      
-                      </div>
-                </button>
+                    <button>
+                      <Link to={url}>
+                        Voir plus
+                      </Link>
+                      </button>
+
               </div>
 
             </div>

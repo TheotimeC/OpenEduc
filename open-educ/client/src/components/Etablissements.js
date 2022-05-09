@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './styles/Etablissements.css'
 import axios from 'axios';
 import Etabli from './Etabli';
+import UserProfile from './Session';
 
 function Etablissements (){
 
@@ -26,13 +27,16 @@ function Etablissements (){
   
 
     return(
-        <div>
-            <h1>🏫 Etablissements 🏫</h1>
 
+        <div>
+        
+
+            <h1>🏫 Etablissements 🏫</h1>
+              
             
               {Object.values(Data).map(({ idetablissement, nom, adresse }) =>(
                 
-                <div key={idetablissement}>
+                <div key={idetablissement} className="test">
 
                   <Etabli 
                     nom={nom} 

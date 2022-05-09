@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/Login.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import UserProfile from './Session';
 
@@ -10,7 +10,8 @@ function Login (){
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
-    const [loginStatus, setLoginStatus] = useState('');;
+    const [loginStatus, setLoginStatus] = useState('');
+    const [loginStatus1, setLoginStatus1] = useState('');;
 
     const login = () => { 
         
@@ -23,12 +24,14 @@ function Login (){
 
             if(response.data.message){
 
-                setLoginStatus(response.data.message)
+                setLoginStatus("Identifiant ou mot de passe incorrect")
+
 
             }else{
 
                UserProfile.setToken(response.data[0].token)
-               setLoginStatus(UserProfile.getToken())
+               setLoginStatus("Vous êtes connectés !")
+               setLoginStatus1(1)
                verifieRole(UserProfile.getToken())
             }
         })
@@ -54,8 +57,7 @@ function Login (){
 
 
     }
-
-
+while(loginStatus1!=1){
     return(
         <div>
             <h1>👋CONNEXION👋</h1>
@@ -77,12 +79,31 @@ function Login (){
                     Connexion
                   </a>
                 </button>
+                
                 </div>
+                
 
             </div>
-                         <h6>{loginStatus}</h6>
+            
+            <h2>{loginStatus}</h2>
         </div>
     )
+    }
+
+if(loginStatus1==1){
+    return(
+        <div>
+            <h1>👋BIENVENUE👋</h1>
+            <div className='card'>
+
+            <h2>{loginStatus}</h2>
+
+            </div>
+                         
+        </div>
+    )
+}
+    return null;
 }
 
 export default Login;

@@ -24,6 +24,9 @@ h1{
 
 
 }
+.test{
+    display: inline-block;
+}
 .card-container:hover{
     transform: scale(1.1);
 }
