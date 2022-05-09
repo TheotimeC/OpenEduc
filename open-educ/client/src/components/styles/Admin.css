@@ -1,0 +1,34 @@
+
+
+h1{
+    color: #092c47;
+    font-family: 'Open Sans Condensed', sans-serif; 
+    font-size: 64px; 
+    font-weight: 700; 
+    line-height: 64px; 
+    margin: 0 0 0; 
+    padding: 20px 30px; 
+    text-align: center; 
+    text-transform: uppercase;
+}
+.card-container{
+    width:350px;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px -5px;
+    transition: 0.3s;
+    animation: ease-in;
+    border-radius:20px;
+    display: inline-block;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 75px;
+}
+
+
+.list-carte{
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
