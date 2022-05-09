@@ -1,38 +1,72 @@
+
+
+
+.contaneur_bandeau{
+
+    list-style-type: space-counter;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	overflow:hidden; 
+	padding: 5px;
+    max-width: 350px;
+  
+
+}
+
+
+
 .bandeau{
-    height: 15%;
-    width: 800px;;
+
+    width: 350px;;
     margin:0px auto;
     margin-top: 3%;
+    margin-bottom: 3%;
     border-radius:20px;
     border:2px solid black;
     background-color: #D3D3D3;
     box-shadow: -10px 5px 10px grey; 
+
+    display: flex;
+    flex-direction: column;
   }
+
+
 .bandeauTitre{
     padding :2%;
-    width: 80%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto; 
+    margin-left: 5%;
     border-radius:20px;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: left;
 
 }
 .bandeauCorrespondant    {
     padding: 2%;
-    width: 80%;
+    width: 95%;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
     border-radius:20px;
-    display: flex;
-    flex-wrap: nowrap;
     justify-content: left;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
 }
 
-#photo, #titre ,#civilité, #nomMAJ, #prenom, #mailCorrespondant{
+.info_contact{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: space-around;
+}
+
+.info_contact, div {
+
+    text-align: left;
+}
+
+/* #photo, #titre ,#civilité, #nomMAJ, #prenom, #mailCorrespondant{
     border:2px solid black;
     width: fit-content;
     margin-left: 10px;
@@ -46,11 +80,27 @@
     font-size: larger;
     font-weight: bold;
     align-self: flex-end;
-}
+} */
 
 #titre {
     align-self: flex-start;
 }
 
+#photo{
+    border:2px solid black;
+    width: fit-content;
+    margin-left: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    border-radius:20px;
+    display: flex;
+    background-color: white;
+    text-align: center;
+    padding: 1%;
+    font-size: larger;
+    font-weight: bold;
+    align-self: flex-end;
+
+}
 
 

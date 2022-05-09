@@ -1,3 +1,19 @@
+
+
+.list-carte{
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+h4{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 h1{
     color: #092c47;
     font-family: 'Open Sans Condensed', sans-serif; 
@@ -24,9 +40,6 @@ h1{
 
 
 }
-.test{
-    display: inline-block;
-}
 .card-container:hover{
     transform: scale(1.1);
 }
@@ -48,6 +61,7 @@ h3,p{
 .btn{
     display:flex;
     justify-content: center;
+
 }
 .btn button{
     padding:0.5rem;

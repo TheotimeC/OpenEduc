@@ -1,6 +1,6 @@
 import * as React from 'react';
-import SampleLine from './Chart3';
-import './styles/Graphique.css'
+import SampleLine from './Chart';
+import '../styles/Graphique.css'
 
 
 export default function Graphique(){

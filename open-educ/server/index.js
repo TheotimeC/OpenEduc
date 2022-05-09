@@ -47,6 +47,7 @@ app.post('/api/login', (req, res)=> {
 
         }else{
             res.send({message : "Login ou Mot de Passe incorrect !"})
+            res.status(200).json
             
         }
         
@@ -82,16 +83,21 @@ app.post('/api/roleVerifie', (req, res)=> {
 
 
 app.get('/api/etab', (req, res)=> {
-
+    
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     db.query("SELECT idetablissement, nom, adresse FROM etablissement",
     (err, result) => {
         
         if(err){
             res.send({err: err});
+            res.status(200).json
         }
 
         if (result.length > 0){
             res.send(result)
+            res.status(200).json
 
         }
         
@@ -101,15 +107,20 @@ app.get('/api/etab', (req, res)=> {
 
 app.get('/api/corres', (req, res)=> {
 
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     db.query("SELECT * FROM personne",
     (err, result) => {
         
         if(err){
-            res.send({err: err});z
+            res.send({err: err});
+            res.status(200).json
         }
 
         if (result.length > 0){
             res.send(result)
+            res.status(200).json
 
         }
         
@@ -118,15 +129,21 @@ app.get('/api/corres', (req, res)=> {
 
 app.get('/api/desc', (req, res)=> {
 
+    
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     db.query("SELECT * FROM etablissement ",
     (err, result) => {
         
         if(err){
             res.send({err: err});
+            res.status(200).json
         }
 
         if (result.length > 0){
             res.send(result)
+            res.status(200).json
 
         }
         
@@ -135,15 +152,20 @@ app.get('/api/desc', (req, res)=> {
 
 app.get('/api/classe', (req, res)=> {
 
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     db.query("SELECT * FROM classe",
     (err, result) => {
         
         if(err){
             res.send({err: err});
+            res.status(200).json
         }
 
         if (result.length > 0){
             res.send(result)
+            res.status(200).json
 
         }
         
@@ -153,20 +175,361 @@ app.get('/api/classe', (req, res)=> {
 
 app.post('/api/insert', (req, res)=> {
 
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     db.query("SELECT * FROM classe",
     (err, result) => {
         
         if(err){
             res.send({err: err});
+            res.status(200).json
         }
 
         if (result.length > 0){
             res.send(result)
+            res.status(200).json
 
         }
         
     })
+} )
+
+app.post('/api/info/Etablissement', (req, res)=> {
+
+    const idEtablissement = req.body.idEtablissement;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("SELECT nom, adresse, tel, mail FROM etablissement WHERE idetablissement = ?",
+    [idEtablissement],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+
+        }else{
+            res.send({message : `L'id de l'établissement est inconnus : ${idEtablissement}`})
+            res.status(200).json
+        }
+        
+    })
 } ) 
+
+app.post('/api/info/Classe', (req, res)=> {
+
+    const idEtablissement = req.body.idEtablissement;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("SELECT total_eleve, niveau, nom FROM classe WHERE idetablissement = ?",
+    [idEtablissement],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+
+        }else{
+            res.send({message : `L'id de l'établissement est inconnus : ${idEtablissement}`})
+            res.status(200).json
+        }
+        
+    })
+} ) 
+
+
+app.post('/api/info/Personne', (req, res)=> {
+
+    const idEtablissement = req.body.idEtablissement;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("SELECT nom, prenom, mail, tel, fonction, civilité FROM personne WHERE idetablissement = ?",
+    [idEtablissement],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+
+        }else{
+            res.send({message : `L'id de l'établissement est inconnus : ${idEtablissement}`})
+            res.status(200).json
+        }
+        
+    })
+} ) 
+
+app.post('/api/update/Etablissement', (req, res)=> {
+
+    const idEtablissement = req.body.idEtablissement;
+    const saiNomEtablissement = req.body.saiNomEtablissement
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("UPDATE etablissement SET nom = ? WHERE idetablissement = ?",
+    [saiNomEtablissement, idEtablissement],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+
+        }else{
+            res.send({message : `L'id de l'établissement est inconnus : ${idEtablissement}`})
+            res.status(200).json
+        }
+
+   
+        
+    })
+} )
+
+
+
+app.post('/api/update/Classe', (req, res)=> {
+
+    const idEtablissement = req.body.idEtablissement;
+    const NomClasse = req.body.nomEcole
+    const saiNomClasse = req.body.saiNomEcole;
+    const saiNiveau = req.body.Niveau
+    const saiTotalEleve = req.body.Effectif;
+    
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("UPDATE classe SET nom = ?, niveau = ?, total_eleve = ? WHERE idetablissement = ? AND nom = ?",
+    [saiNomClasse, saiNiveau, saiTotalEleve, idEtablissement,NomClasse],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+
+        }else{
+            res.send({message : `L'id de l'établissement est inconnus : ${idEtablissement}`})
+            res.status(200).json
+        }
+
+   
+        
+    })
+} )
+
+
+app.post('/api/update/Personne', (req, res)=> {
+
+    const idEtablissement = req.body.idEtablissement;
+    const mail = req.body.mail
+    const saiMail = req.body.saiMail;
+    const saiNom = req.body.saiNom
+    const saiPrenom = req.body.saiPrenom;
+    const saiTel = req.body.saiTel
+    
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("UPDATE personne SET nom = ?, prenom = ?, mail = ?, tel = ? WHERE idetablissement = ? AND mail = ?",
+    [saiNom, saiPrenom, saiMail, saiTel, idEtablissement, mail],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+
+        }else{
+            res.send({message : `L'id de l'établissement est inconnus : ${idEtablissement}`})
+            res.status(200).json
+        }
+        
+    })
+} )
+
+app.post('/api/ajouter/Classe', (req, res)=> {
+
+    const idEtablissement = req.body.idEtablissement;
+    const NomClasse = req.body.nomEcole
+    const saiNomClasse = req.body.saiNomEcole;
+    const saiNiveau = req.body.Niveau
+    const saiTotalEleve = req.body.Effectif;
+    
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("INSERT INTO classe (idetablissement, total_eleve, niveau, nom) VALUES(?, ?, ?, ?)",
+    [idEtablissement,saiTotalEleve,saiNiveau, saiNomClasse],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+
+        }else{
+            res.send({message : `L'id de l'établissement est inconnus : ${idEtablissement}`})
+            res.status(200).json
+        }
+        
+    })
+} )
+
+app.post('/api/Supprimer/Classe', (req, res)=> {
+
+    const idEtablissement = req.body.idEtablissement;
+    const NomClasse = req.body.nomEcole;
+    
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("DELETE FROM classe WHERE idetablissement = ? AND nom = ?",
+    [idEtablissement,NomClasse],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+
+        }else{
+            res.send({message : `L'id de l'établissement est inconnus : ${idEtablissement}`})
+            res.status(200).json
+        }
+        
+    })
+} )
+
+
+app.post('/api/Ajouter/Personne', (req, res)=> {
+
+    const idEtablissement = req.body.idEtablissement;
+    const saiMail = req.body.saiMail;
+    const saiNom = req.body.saiNom
+    const saiPrenom = req.body.saiPrenom;
+    const saiTel = req.body.saiTel
+    
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("INSERT INTO personne (idetablissement, nom, prenom, mail, tel) VALUES (?, ?, ?, ?, ?)",
+    [idEtablissement, saiNom, saiPrenom, saiMail, saiTel],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+
+        }else{
+            res.send({message : `L'id de l'établissement est inconnus : ${idEtablissement}`})
+            res.status(200).json
+        }
+        
+    })
+} )
+
+app.post('/api/Supprimer/Personne', (req, res)=> {
+
+    const idEtablissement = req.body.idEtablissement;
+    const Mail = req.body.mail;
+
+    
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    db.query("DELETE FROM personne WHERE idetablissement = ? AND mail = ?",
+    [idEtablissement, Mail],(err, result) => {
+        
+        if(err){
+            res.send({err: err});
+            res.status(200).json
+        }
+
+        if (result.length > 0){
+            res.send(result)
+            res.status(200).json
+
+        }else{
+            res.send({message : `L'id de l'établissement est inconnus : ${idEtablissement}`})
+            res.status(200).json
+        }
+        
+    })
+} )
+
+// app.post('/api/update/Etablissement', (req, res)=> {
+
+//     const idEtablissement = req.body.idEtablissement;
+//     const saiNomEtablissement = req.body.saiNomEtablissement
+//     const nomEtablissement = req.body.nomEtablissement;
+
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header('Access-Control-Allow-Methods', 'GET, POST');
+//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     db.query("UPDATE etablissement SET nom = REPLACE(nom, ?, ? WHERE idetablissement = ?",
+//     [idEtablissement, nomEtablissement],(err, result) => {
+        
+//         if(err){
+//             res.send({err: err});
+//             res.status(200).json
+//         }
+
+//         if (result.length > 0){
+//             res.send(result)
+//             res.status(200).json
+
+//         }else{
+//             res.send({message : `L'id de l'établissement est inconnus : ${idEtablissement}`})
+//             res.status(200).json
+//         }
+        
+//     })
+// } )
+
+
+
+
 
 /*
  app.post("http://localhost:3001/api/insert", (req, res) => {

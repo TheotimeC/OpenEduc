@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
-import './styles/Etablissements.css'
-import Bischoffsheim from './img/Bischoffsheim.jpg'
+import '../styles/Etablissements.css'
+import Bischoffsheim from '../img/Bischoffsheim.jpg'
+import {Link} from 'react-router-dom';
+import handleclick from '../Etablissement/click'
 
 
-function Carte ({nom, adresse}){
+function EtabliModif ({idetablissement, nom, adresse}){
+
+
+
     return(
-
         <div>
-            <h1>🏫 Etablissements 🏫</h1>
+            
             <div className='card-container'>
               <div className='image-container'>
                 <img src={Bischoffsheim} alt=''/>
@@ -22,18 +25,23 @@ function Carte ({nom, adresse}){
                 </div>
 
               </div>
-
+                
               <div className='btn'>
-                <button>
-                  <a>
-                    Voir plus
-                  </a>
+                <button onClick={() => handleclick(idetablissement)}>
+
+                    
+                    <div className='a'>
+                    <Link to={"/Etablissements/modif"}> Modifier </Link>
+                      
+                      </div>
                 </button>
               </div>
 
             </div>
+
+
         </div>
     )
 }
 
-export default Carte
+export default EtabliModif

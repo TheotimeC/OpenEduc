@@ -1,6 +1,6 @@
 
 .leBody{
-    width: 800px;;
+    width: 700px;;
     margin-top: 3%;
     margin-left: auto;
     margin-right: auto;
@@ -13,8 +13,8 @@
 }
 
 .graph-Contaneur{
-    height: 450px;
-    width: 725px;
+    height: 350px;
+    width: 550px;
     background-color: aliceblue;
     display: block;
     margin-left: auto;
@@ -25,3 +25,4 @@
     border: 1px solid rgba(59, 58, 58, 0.4);
     border-radius: 20px;
 }
+

@@ -1,6 +1,40 @@
+
+.principale{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+}
+
+
+.fihceEcoleContainer{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+.contaner_ficheEcole{
+
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.side_haut{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 2%;
+}
+
 .bandeauEcole{
     height: 15%;
-    width: 775px;;
+    width: 700px;;
     margin:0px auto;
     margin-top: 3%;
     border-radius:20px;
@@ -9,6 +43,8 @@
     box-shadow: -10px 5px 10px grey;
     padding: 1%;
   }
+
+
 
 #nom{
     text-align: center;

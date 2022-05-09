@@ -1,0 +1,171 @@
+
+
+
+h2{
+	background-color: #c2cece;
+    color: #092c47;
+    font-family: 'Open Sans Condensed', sans-serif; 
+    font-size: 32px; 
+    font-weight: 700; 
+    line-height: 64px; 
+    margin: 0 0 0; 
+    padding: 10px; 
+    text-align: center; 
+    text-transform: uppercase;
+	border-bottom: #092c47 1px solid;
+	border-radius: 12px;
+	
+}
+
+.faux-body{
+
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: row; 
+	align-content: center;
+	align-items: flex-end;
+	background-color: #f5f5f5;
+	
+}
+
+.container_modif{
+
+	height: 100%;
+	width: 70%;
+	display: flex;
+	flex-direction: column; 
+	background-color: white;
+	box-shadow: 0px 0px 15px -5px;
+	transition: 0.3s;
+	border-radius:20px;
+	margin-top: 15px;
+	margin-bottom: 30px;
+	background-color: white;
+	
+}
+
+.container_modif_suppr{
+
+	height: 100%;
+	width: 70%;
+	display: flex;
+	flex-direction: column; 
+	background-color: #f5f5f5;
+	margin-top: 15px;
+	margin-bottom: 15px;
+
+}
+.container_modif_classe{
+
+	max-height: 600px;
+	min-width: 100%;
+
+}
+
+
+.footer_saisie_classe{
+
+	display: flex;
+	justify-content: flex-start;
+	padding-left: 30px;
+}
+
+
+.class-list{
+
+	list-style-type: space-counter;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	overflow:hidden; 
+	overflow-x:scroll;
+	padding: 17px;
+	margin-left: 10px;
+	margin-right: 10px;
+	
+
+	
+}
+
+
+.lmj-cart{ 
+
+
+
+overflow: hidden;
+box-shadow: 0px 0px 15px -5px;
+transition: 0.3s;
+border-radius:20px;
+display: inline-block;
+margin-left: 10px;
+margin-right: 10px;
+margin-top: 20px;
+min-width: 12em;
+
+
+display: flex;
+justify-content: center; 
+flex-direction: column;
+text-transform: capitalize;
+
+background-color: #f5f5f5;
+color: blue;
+
+}
+
+.lmj-cart:hover{
+
+	transform: scale(1.1);
+}
+
+.footer-modif{
+
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-left: 40%;
+	padding-bottom: 30px;
+	max-width: fit-content;
+}
+
+
+
+.container_saisie_classe{
+
+    text-align: left;
+    padding: 32px;
+    margin-left: 20px;
+}
+
+.container_saisie_classe, input, button {
+
+	margin: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+/* 
+.lmj-classe-item{
+
+    margin: 10px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	text-transform: capitalize;
+}
+
+.lmj-cart {
+	color: white;
+	background-color: #31b572;
+	padding: 32px;
+} */
