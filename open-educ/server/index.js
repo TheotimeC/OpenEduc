@@ -33,7 +33,7 @@ app.post('/api/login', (req, res)=> {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'GET, POST');
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    db.query("SELECT token FROM user WHERE iduser = ? AND password = ?",
+    db.query("SELECT token FROM user WHERE login = ? AND password = ?",
     [login,psw],(err, result) => {
         
         if(err){

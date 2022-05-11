@@ -80,8 +80,7 @@ function Correspondant(idetablissement) {
                     <div className='info_contact'>
 
                         <div>{civilité} </div>
-                        <div>{nom}</div>    
-                        <div>{prenom}</div>
+                        <div>{nom} {prenom}</div>    
                         <div>{mail}</div>
                         <div>{tel}</div>
 
