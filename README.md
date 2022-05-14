@@ -2,6 +2,7 @@
 
 
 OpenEduc est une WebApp de recueil et de diffusion d'information destiné a l'APEA.
+Projet fictif pour l'épreuvre E5 de BTS SIO
 
 ## Description
 
